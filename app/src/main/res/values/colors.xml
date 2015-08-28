@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="holo_blue_bright">#FF00DDFF</color>
+    <color name="LightSkyBlue">#FF87CEFA</color>
+    <color name="buttom_bar_click">#0099CC</color>
+    <color name="tab_icon_grey">#555555</color>
+    <color name="white1">#2033B5E5</color>
+    <color name="white2">#20333545</color>
+    <color name="black">#000000</color>
+    <!-- 主应用程序 -->
+    <color name="title_icon">#ff000000</color>
+    <color name="text_minor">#ff666666</color>
+    <color name="application_backcolor">#fff6eade</color>
+    <color name="login_font">#3D3E40</color>
+
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="accent">#F50057</color>
+    <color name="window_background">#FFFFFF</color>
+    <color name="text_color_light">#FFFFFF</color>
+</resources>

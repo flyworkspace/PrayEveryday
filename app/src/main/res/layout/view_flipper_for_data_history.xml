@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myapp="http://schemas.android.com/apk/res/com.luckyxmobile.babycareplus"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:id="@+id/statistics1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip" >
+
+            <com.luckyxmobile.customview.TextViewMultilineEllipse
+                android:id="@+id/feed_history"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|left"
+                android:text="n/a" />
+
+            <ListView
+                android:id="@+id/history_list_first"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/feed_history"
+                android:background="#00000000"
+                android:cacheColorHint="#00000000"
+                android:choiceMode="singleChoice"
+                android:dividerHeight="1dip"
+                android:scrollbars="none" >
+            </ListView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/statistics_second"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip" >
+
+            <com.luckyxmobile.customview.TextViewMultilineEllipse
+                android:id="@+id/feed_history_second"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|left"
+                android:text="n/a" />
+
+            <ListView
+                android:id="@+id/history_list_second"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/feed_history_second"
+                android:background="#00000000"
+                android:cacheColorHint="#00000000"
+                android:choiceMode="singleChoice"
+                android:dividerHeight="1dip"
+                android:scrollbars="none" >
+            </ListView>
+        </LinearLayout>
+    </ViewFlipper>
+
+</LinearLayout>

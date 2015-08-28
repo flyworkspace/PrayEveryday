@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/main_actionbar_calendar"
+        android:icon="@drawable/ic_calendar"
+        android:orderInCategory="0"
+        app:showAsAction="always"
+        android:title="@string/calendar"/>
+    <item
+        android:id="@+id/main_actionbar_update"
+        android:icon="@drawable/ic_refresh"
+        android:orderInCategory="0"
+        app:showAsAction="always"
+        android:title="@string/update_data"/>
+    <item
+        android:id="@+id/menu_preferences"
+        android:orderInCategory="1"
+        app:showAsAction="never"
+        android:title="@string/setting"/>
+    <item
+        android:id="@+id/menu_exit"
+        android:orderInCategory="2"
+        app:showAsAction="never"
+        android:title="@string/exit"/>
+
+</menu>
