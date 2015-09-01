@@ -31,6 +31,7 @@ import org.cathassist.daily.bean.CalendarDay;
 import org.cathassist.daily.bean.DateBean;
 import org.cathassist.daily.bean.DayContent;
 import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.provider.EnumManager;
 import org.cathassist.daily.provider.EnumManager.ContentType;
 import org.cathassist.daily.util.GetSharedPreference;
 import org.cathassist.daily.util.NetworkTool;
@@ -117,6 +118,9 @@ public class MainActivity extends AbsDoubleBackExitActivity implements Navigatio
             case R.id.main_actionbar_update:
                 updateDate();
                 break;
+            case R.id.main_actionbar_font_size:
+                showTextSizeDialog();
+                break;
             case R.id.menu_preferences:
                 Intent intent = new Intent(MainActivity.this, Preferences.class);
                 startActivity(intent);
@@ -156,6 +160,42 @@ public class MainActivity extends AbsDoubleBackExitActivity implements Navigatio
                                 dialog.dismiss();
                             }
                         }).show();
+    }
+
+    private void showTextSizeDialog() {
+        int fontsize = GetSharedPreference.getFontSize(MainActivity.this);
+        int position = EnumManager.FontSize.getTextSizeBySize(fontsize).ordinal();
+        new AlertDialog.Builder(this)
+                .setSingleChoiceItems(R.array.text_size, position, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EnumManager.FontSize fontSize = EnumManager.FontSize.NORMAL;
+                        switch (which){
+                            case 0:
+                                fontSize = EnumManager.FontSize.SMALL;
+                                break;
+                            case 1:
+                                fontSize = EnumManager.FontSize.NORMAL;
+                                break;
+                            case 2:
+                                fontSize = EnumManager.FontSize.LARGE;
+                                break;
+                            case 3:
+                                fontSize = EnumManager.FontSize.LARGEST;
+                                break;
+                        }
+                        GetSharedPreference.setFontSize(MainActivity.this, fontSize.getValue());
+                        mTabFragment.setTextSize(fontSize);
+                        dialog.cancel();
+                    }
+                })
+                .setTitle(R.string.text_size)
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                }).show();
     }
 
     private void showTipsDialog() {

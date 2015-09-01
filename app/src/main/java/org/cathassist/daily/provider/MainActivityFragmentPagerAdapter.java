@@ -81,4 +81,12 @@ public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
             }
         }
     }
+
+    public void setTextSize(EnumManager.FontSize fontSize) {
+        for (Fragment fragment : fragments) {
+            if (fragment instanceof PrayFragment) {
+                ((PrayFragment)fragment).setTextSize(fontSize);
+            }
+        }
+    }
 }

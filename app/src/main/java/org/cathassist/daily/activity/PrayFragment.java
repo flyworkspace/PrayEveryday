@@ -3,7 +3,9 @@ package org.cathassist.daily.activity;
 import org.cathassist.daily.R;
 import org.cathassist.daily.bean.DayContent;
 import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.provider.EnumManager;
 import org.cathassist.daily.util.CreateHtmlFile;
+import org.cathassist.daily.util.GetSharedPreference;
 
 import com.spreada.utils.chinese.ZHConverter;
 
@@ -84,9 +86,10 @@ public class PrayFragment extends Fragment {
             setting.setBuiltInZoomControls(true);
             setting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
 
-            setting.setTextZoom(130);
-            if (android.os.Build.VERSION.SDK_INT > 13)
+            if (android.os.Build.VERSION.SDK_INT > 13) {
                 setting.setDisplayZoomControls(false);
+                setting.setTextZoom(GetSharedPreference.getFontSize(getActivity()));
+            }
 
             if (dayContent != null) {
                 Thread thread = new Thread(null, doBackgroundThreadProcessing,
@@ -96,6 +99,14 @@ public class PrayFragment extends Fragment {
         }
         mWebView.setBackgroundColor(0);
         return view;
+    }
+
+    public void setTextSize(EnumManager.FontSize fontSize) {
+        if (mWebView != null) {
+            if (android.os.Build.VERSION.SDK_INT > 13) {
+                mWebView.getSettings().setTextZoom(fontSize.getValue());
+            }
+        }
     }
 
     public void setDate(String date) {

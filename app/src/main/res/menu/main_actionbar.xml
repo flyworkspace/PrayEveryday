@@ -7,6 +7,13 @@
         android:orderInCategory="0"
         app:showAsAction="always"
         android:title="@string/update_data"/>
+
+    <item
+        android:id="@+id/main_actionbar_font_size"
+        android:icon="@drawable/ic_text_format_white_24dp"
+        android:orderInCategory="0"
+        app:showAsAction="always"
+        android:title="@string/text_size"/>
     <item
         android:id="@+id/menu_preferences"
         android:icon="@drawable/ic_settings_white_24dp"

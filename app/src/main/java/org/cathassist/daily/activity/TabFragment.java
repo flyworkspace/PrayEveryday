@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.cathassist.daily.R;
+import org.cathassist.daily.provider.EnumManager;
 import org.cathassist.daily.provider.MainActivityFragmentPagerAdapter;
 import org.cathassist.daily.util.TimeFormatter;
 
@@ -82,15 +83,11 @@ public class TabFragment extends Fragment {
     public ArrayList<Fragment> fragments(String date) {
         ArrayList<Fragment> fragmentList = new ArrayList<Fragment>();
         for (int i = 0; i < 7; i++) {
-            if (i == -1) {
+            if (i == 0) {
                 fragmentList.add(MainFragment.newInstance(date));
-                Log.e("date", date);
             } else {
                 PrayFragment fragment;
                 switch (i) {
-                    case 0:
-                        fragment = PrayFragment.newInstance(date, 0);
-                        break;
                     case 1:
                         fragment = PrayFragment.newInstance(date, 0);
                         break;
@@ -127,5 +124,9 @@ public class TabFragment extends Fragment {
     public void setDate(String date) {
         pagerAdapter.setFragmentDate(date);
 //        pagerAdapter.setFragments(fragments(date));
+    }
+
+    public void setTextSize(EnumManager.FontSize fontSize){
+        pagerAdapter.setTextSize(fontSize);
     }
 }
