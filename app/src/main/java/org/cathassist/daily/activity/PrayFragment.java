@@ -82,8 +82,9 @@ public class PrayFragment extends Fragment {
 
             setting.setSupportZoom(true);
             setting.setBuiltInZoomControls(true);
-            setting.setLoadWithOverviewMode(true);
-            setting.setUseWideViewPort(true);
+            setting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+
+            setting.setTextZoom(130);
             if (android.os.Build.VERSION.SDK_INT > 13)
                 setting.setDisplayZoomControls(false);
 
@@ -99,7 +100,7 @@ public class PrayFragment extends Fragment {
 
     public void setDate(String date) {
         dateString = date;
-        if (dbHelper == null || dayContent == null) {
+        if (dbHelper == null) {
             return;
         }
         dbHelper.open();

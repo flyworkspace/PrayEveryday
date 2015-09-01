@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.cathassist.daily.R;
-import org.cathassist.daily.R.id;
 import org.cathassist.daily.bean.CalendarDay;
 import org.cathassist.daily.database.TodoDbAdapter;
 import org.cathassist.daily.provider.CalendarManager;
@@ -13,13 +12,8 @@ import org.cathassist.daily.util.PublicFunction;
 
 import com.spreada.utils.chinese.ZHConverter;
 
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.drm.DrmStore.RightsStatus;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -38,7 +32,7 @@ public final class MainFragment extends Fragment implements OnClickListener {
 	private String dateString;
 
 	private Button btnLaudes, btnHoramedia, btnMatutinum, btnVesperae,
-			btnCompletorium, btnMass, btnBible;
+			btnCompletorium, btnMass, btnCalendar;
 
 	public static MainFragment newInstance(String dateString) {
 		MainFragment fragment = new MainFragment();
@@ -115,7 +109,7 @@ public final class MainFragment extends Fragment implements OnClickListener {
 		btnVesperae = (Button) view.findViewById(R.id.btn_vesperae);
 		btnCompletorium = (Button) view.findViewById(R.id.btn_completorium);
 		btnMass = (Button) view.findViewById(R.id.btn_mass);
-		btnBible = (Button) view.findViewById(R.id.btn_bible);
+		btnCalendar = (Button) view.findViewById(R.id.btn_calendar);
 		txtColor = (TextView) view.findViewById(R.id.txt_color);
 	}
 
@@ -126,7 +120,7 @@ public final class MainFragment extends Fragment implements OnClickListener {
 		btnVesperae.setOnClickListener(this);
 		btnCompletorium.setOnClickListener(this);
 		btnMass.setOnClickListener(this);
-		btnBible.setOnClickListener(this);
+		btnCalendar.setOnClickListener(this);
 	}
 
 	@Override
@@ -227,18 +221,22 @@ public final class MainFragment extends Fragment implements OnClickListener {
 		case R.id.btn_mass:
 			mListener.onArticleSelected(6);
 			break;
-		case R.id.btn_bible:
-			if (PublicFunction
-					.isAvilible(getActivity(), "org.cathassist.bible")) {
-				Intent intent = new Intent();
-				intent.setClassName("org.cathassist.bible",
-						"org.cathassist.bible.MainActivity");
-				startActivity(intent);
-			} else {
-				Uri uri = Uri.parse("market://details?id=org.cathassist.bible");
-				Intent it = new Intent(Intent.ACTION_VIEW, uri);
-				startActivity(it);
-			}
+		case R.id.btn_calendar:
+//			if (PublicFunction
+//					.isAvilible(getActivity(), "org.cathassist.bible")) {
+//				Intent intent = new Intent();
+//				intent.setClassName("org.cathassist.bible",
+//						"org.cathassist.bible.MainActivity");
+//				startActivity(intent);
+//			} else {
+//				Uri uri = Uri.parse("market://details?id=org.cathassist.bible");
+//				Intent it = new Intent(Intent.ACTION_VIEW, uri);
+//				startActivity(it);
+//			}
+
+			Intent intentCalendar = new Intent(getActivity(),
+					CalendarListActivity.class);
+			startActivity(intentCalendar);
 			break;
 		
 		default:

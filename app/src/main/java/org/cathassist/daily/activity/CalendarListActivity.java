@@ -15,6 +15,7 @@ import android.app.DatePickerDialog.OnDateSetListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +27,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 
-public class CalendarListActivity extends AppCompatActivity {
+public class CalendarListActivity extends BaseActivity {
 	private PullToRefreshExpandableListView mListDiary;
 	private ExpandableListView mListView;
 	private DailyListAdapter dailyListAdapter;
@@ -36,6 +37,7 @@ public class CalendarListActivity extends AppCompatActivity {
 	private static final int BOTTOM_REFRESH = 1;
 	TodoDbAdapter dbHelper;
 	PrayInEveryday prayEveryday;
+	private Toolbar mToolbar;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,10 @@ public class CalendarListActivity extends AppCompatActivity {
 	private void findView() {
 		mListDiary = (PullToRefreshExpandableListView) findViewById(R.id.list_calendar);
 		mListView = mListDiary.getRefreshableView();
+		mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(mToolbar);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowHomeEnabled(true);
 	}
 
 	private void backToTime(Calendar calendar) {
@@ -75,7 +81,6 @@ public class CalendarListActivity extends AppCompatActivity {
 	}
 
 	private void initViewData() {
-
 		mListView.setOnChildClickListener(new OnChildClickListener() {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,

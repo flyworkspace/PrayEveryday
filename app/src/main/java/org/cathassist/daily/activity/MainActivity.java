@@ -1,7 +1,5 @@
 package org.cathassist.daily.activity;
 
-import android.app.AlertDialog.Builder;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,13 +8,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.umeng.update.UmengUpdateAgent;
 
 import org.cathassist.daily.PrayInEveryday;
 import org.cathassist.daily.R;
@@ -40,11 +39,10 @@ import org.cathassist.daily.util.PublicFunction.OnClickCancelListener;
 import org.cathassist.daily.util.TimeFormatter;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
+public class MainActivity extends AbsDoubleBackExitActivity implements NavigationView.OnNavigationItemSelectedListener,
         OnClickCancelListener, OnArticleSelectedListener {
     private final static String SELECTED_TAG = "selected_index";
     private final static String COLLAPSING_TOOLBAR_FRAGMENT_TAG = "collapsing_toolbar";
@@ -61,6 +59,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        UmengUpdateAgent.setUpdateListener(null);
+        UmengUpdateAgent.update(this);
+        UmengUpdateAgent.setUpdateOnlyWifi(false);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -82,7 +83,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("MainonResume", "MainonResume");
     }
 
     @Override
@@ -114,20 +114,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         switch (item.getItemId()) {
             case android.R.id.home:
                 return true;
-            case R.id.main_actionbar_calendar:
-                Intent intentCalendar = new Intent(MainActivity.this,
-                        CalendarListActivity.class);
-                startActivity(intentCalendar);
-                break;
             case R.id.main_actionbar_update:
                 updateDate();
                 break;
             case R.id.menu_preferences:
                 Intent intent = new Intent(MainActivity.this, Preferences.class);
                 startActivity(intent);
-                break;
-            case R.id.menu_exit:
-                getApplicationContext().sendBroadcast(new Intent("finish"));
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -136,65 +128,40 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-//            if (mPager.getCurrentItem() == 0)
-            dialog();
-//            else
-//                mPager.setCurrentItem(0);
+            if (drawerLayout.isDrawerOpen(navigationView)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            } else
+                return super.onKeyDown(keyCode, event);
         }
         return false;
     }
 
-    protected void dialog() {
-        Builder builder = new Builder(this);
-        builder.setMessage(R.string.exit_tip);
-        builder.setTitle(R.string.tip);
-        builder.setPositiveButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        Intent intentExit = new Intent();
-                        intentExit.setAction("finish");
-                        sendBroadcast(intentExit);
-                        finish();
-                    }
-                });
-        builder.setNegativeButton(android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        builder.create().show();
-    }
-
     protected void updateDialog() {
-        Builder builder = new Builder(this);
-        builder.setMessage(R.string.first);
-        builder.setTitle(R.string.tip);
-        builder.setPositiveButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        updateDate();
-                    }
-                });
-        builder.setNegativeButton(android.R.string.cancel,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        builder.create().show();
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.first)
+                .setTitle(R.string.tip)
+                .setPositiveButton(android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                updateDate();
+                            }
+                        })
+                .setNegativeButton(android.R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).show();
     }
 
     private void showTipsDialog() {
         if (GetSharedPreference.getVersionCode(MainActivity.this) < PublicFunction
                 .getVerCode(MainActivity.this)) {
-            PublicFunction.getTipsDialog(MainActivity.this, true).show();
+            PublicFunction.showTipsDialog(MainActivity.this, true, this);
             GetSharedPreference.setVersionCode(MainActivity.this,
                     PublicFunction.getVerCode(MainActivity.this));
         }
@@ -216,19 +183,24 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 //            progressDialog.setIndeterminate(false);// 设置进度条是否为不明确
 //            progressDialog.setCancelable(false);// 设置进度条是否可以按退回键取消
 //            progressDialog.show();
+            startWaitingProgress();
             String deleteTime = PublicFunction
                     .getYearMonthDayForSql(calendar.getTime());
             dbHelper.open();
             dbHelper.deleteOldData(deleteTime);
-            final ArrayList<Object> objects = new ArrayList<>();
             for (int i = 0; i < 15; i++) {
                 final Calendar c = Calendar.getInstance();
                 c.add(Calendar.DAY_OF_YEAR, i);
                 final String dateString = TimeFormatter.formatDateYYYYMMDD(c
                         .getTimeInMillis());
                 if (dbHelper.getCalendarDayByDate(dateString) != null) {
+                    if (i == 14) {
+                        showSnackbar(navigationView, "不需要更新", Snackbar.LENGTH_SHORT);
+                        stopWaitingProgress();
+                    }
                     continue;
                 }
+                final boolean isLast = i == 14;
                 count++;
                 String httpUrl2 = PrayInEveryday.SERVER_URL2
                         + dateString;
@@ -248,34 +220,29 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                         CalendarDay calendarDay = new CalendarDay();
                         calendarDay.setDate(dateString);
                         dbHelper.insertCalendarDay(calendarDay);
+                        if (isLast) {
+                            Snackbar.make(navigationView, "FINISH" + dateString, Snackbar.LENGTH_SHORT).show();
+                            mTabFragment.setDate(TimeFormatter.formatDateYYYYMMDD(Calendar.getInstance().getTimeInMillis()));
+                            loadDate();
+                            stopWaitingProgress();
+                        }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        stopWaitingProgress();
                     }
                 });
-                Object obj = new Object();
                 mQueue.add(jsonObjectRequest);
-                jsonObjectRequest.setTag(obj);
-                objects.add(obj);
-                mQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-                    @Override
-                    public void onRequestFinished(Request<String> request) {
-                        objects.remove(request.getTag());
-//                        count--;
-//                        if (count == 0) {
-                        if (objects.isEmpty()) {
-                            Snackbar.make(navigationView, "FINISH" + request, Snackbar.LENGTH_SHORT).show();
-//                            Toast.makeText(MainActivity.this, "FINISH", Toast.LENGTH_SHORT).show();
-//                        }
-                        }
-                    }
-                });
             }
         } else {
             PublicFunction.showToast(MainActivity.this,
                     getString(R.string.no_web));
         }
+    }
+
+    private void showLoadingDialog() {
+
     }
 
     @Override

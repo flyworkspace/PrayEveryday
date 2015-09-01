@@ -18,7 +18,6 @@
             android:layout_gravity="top|center_horizontal"
             android:gravity="top|left"
             android:paddingTop="5dip"
-            android:text="江湖秘籍：你也想发秘籍吗？投稿吧，不过没钱。"
             android:visibility="gone" />
 
         <FrameLayout

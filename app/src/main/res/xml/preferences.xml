@@ -8,8 +8,7 @@
         </PreferenceScreen>
        <PreferenceScreen
             android:key="about_us"
-            android:title="@string/about_us"
-            android:summary="关于天主教小助手" >
+            android:title="@string/about_us" >
            <intent
                 android:action="org.cathassist.daily.activity.AboutUsActivity"
                 android:targetClass="org.cathassist.daily.activity.AboutUsActivity"

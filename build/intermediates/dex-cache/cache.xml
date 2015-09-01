@@ -9,27 +9,6 @@
         <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/umeng_sdk-a513cbf78752ba2c38127be491d064b374ba557a.jar" />
     </item>
     <item
-        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/PrayEveryday3.library/handmarkPulltorefreshLibrary/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="1951af33de714bd567942faa76c5dd9fb018831f">
-        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-1eccdbd47ebfcb3934aedca821c85cfb20cf06e6.jar" />
-    </item>
-    <item
-        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/PrayEveryday3.library/PageindicatorLib-2.4.1/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="7142addf82e72f1eed6f8bee7b67645be2bc4cc5">
-        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-f17f7d285540e3474791fd9cc2f70b74d422d4ae.jar" />
-    </item>
-    <item
-        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/com.android.support/design/23.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0"
-        sha1="8a5238e4bdcd6568b82db669d41817de670586b8">
-        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-9b8b493bedb62693c2a9067c17773d76c62ca6b4.jar" />
-    </item>
-    <item
         jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
         jumboMode="false"
         revision="23.0.0"
@@ -37,11 +16,11 @@
         <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-58a98298cb90780821ed84176b68307a1b4f057b.jar" />
     </item>
     <item
-        jar="/Users/xunfit/Android/android-sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/PrayEveryday3.library/umeng_update_lib/unspecified/jars/libs/umeng-update-v2.6.0.1.jar"
         jumboMode="false"
         revision="23.0.0"
-        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
-        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.0-7f7bff400c315716d4708bad675576153a811f0c.jar" />
+        sha1="7bfeea30c4995f90a4374ce4177772a4579f2797">
+        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/umeng-update-v2.6.0.1-f63e9dd6ba2c0462124e68709905eaca181a843a.jar" />
     </item>
     <item
         jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
@@ -51,11 +30,25 @@
         <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-20f7f1be225b4da08d2c3651bc76da2b8a1897cf.jar" />
     </item>
     <item
-        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/PrayEveryday3.library/SlidingMenulibrary/unspecified/jars/classes.jar"
+        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/com.android.support/design/23.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.0"
-        sha1="e0df9c6c0086037aca15aad5124d762eba5fb14b">
-        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-1851a1eca6d69e9e695d0998a703f227cc910ce7.jar" />
+        sha1="8a5238e4bdcd6568b82db669d41817de670586b8">
+        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-9b8b493bedb62693c2a9067c17773d76c62ca6b4.jar" />
+    </item>
+    <item
+        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-7de456fe461de4b907d8a8f99a5eb99d63085625.jar" />
+    </item>
+    <item
+        jar="/Users/xunfit/Android/android-sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.0-7f7bff400c315716d4708bad675576153a811f0c.jar" />
     </item>
     <item
         jar="/Users/xunfit/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/cce0823396aa693798f8882e64213b1772032b09/guava-18.0.jar"
@@ -72,11 +65,18 @@
         <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/library-1.0.18-4a365e924754c4ac7cac546a64389b130a222d62.jar" />
     </item>
     <item
-        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/PrayEveryday3.library/umeng_update_lib/unspecified/jars/classes.jar"
         jumboMode="false"
         revision="23.0.0"
-        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
-        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-7de456fe461de4b907d8a8f99a5eb99d63085625.jar" />
+        sha1="dc75a065e2af4f84690635c813605e04e9043112">
+        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-b9e3ba0feb99269bc066a88ad60f14877a97fb49.jar" />
+    </item>
+    <item
+        jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/exploded-aar/PrayEveryday3.library/handmarkPulltorefreshLibrary/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="fcbe102b8450f7958bae552c8227a25ae6905bc0">
+        <dex dex="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/build/intermediates/pre-dexed/debug/classes-1eccdbd47ebfcb3934aedca821c85cfb20cf06e6.jar" />
     </item>
     <item
         jar="/Users/xunfit/Desktop/android_project/FABtransitions/PrayEveryday3/app/libs/ZHConverter.jar"

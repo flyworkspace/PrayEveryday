@@ -13,14 +13,16 @@ import android.view.ViewGroup;
 
 import org.cathassist.daily.R;
 import org.cathassist.daily.provider.MainActivityFragmentPagerAdapter;
+import org.cathassist.daily.util.TimeFormatter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TabFragment extends Fragment{
+public class TabFragment extends Fragment {
 
     private MainActivity mainActivity;
     private Toolbar toolbar;
@@ -45,7 +47,7 @@ public class TabFragment extends Fragment{
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_tab, container, false);
-        toolbar = (Toolbar) view.findViewById(R.id.tab_toolbar);
+        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         setupToolbar();
         viewPager = (ViewPager) view.findViewById(R.id.tab_view_pager);
         setupViewPager();
@@ -61,7 +63,6 @@ public class TabFragment extends Fragment{
     }
 
     private void setupToolbar() {
-        toolbar.setTitle("AAAA");
         mainActivity.setSupportActionBar(toolbar);
     }
 
@@ -71,19 +72,25 @@ public class TabFragment extends Fragment{
 
 
     private void setupViewPager() {
-        pagerAdapter = new MainActivityFragmentPagerAdapter(getActivity(), getChildFragmentManager(), fragments("2015-08-28"));
+        Calendar c = Calendar.getInstance();
+        String dateString = TimeFormatter.formatDateYYYYMMDD(c
+                .getTimeInMillis());
+        pagerAdapter = new MainActivityFragmentPagerAdapter(getActivity(), getChildFragmentManager(), fragments(dateString));
         viewPager.setAdapter(pagerAdapter);
     }
 
     public ArrayList<Fragment> fragments(String date) {
         ArrayList<Fragment> fragmentList = new ArrayList<Fragment>();
         for (int i = 0; i < 7; i++) {
-            if (i == 0) {
+            if (i == -1) {
                 fragmentList.add(MainFragment.newInstance(date));
                 Log.e("date", date);
             } else {
                 PrayFragment fragment;
                 switch (i) {
+                    case 0:
+                        fragment = PrayFragment.newInstance(date, 0);
+                        break;
                     case 1:
                         fragment = PrayFragment.newInstance(date, 0);
                         break;
@@ -117,7 +124,7 @@ public class TabFragment extends Fragment{
         viewPager.setCurrentItem(page);
     }
 
-    public void setDate(String date){
+    public void setDate(String date) {
         pagerAdapter.setFragmentDate(date);
 //        pagerAdapter.setFragments(fragments(date));
     }

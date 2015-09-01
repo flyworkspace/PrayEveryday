@@ -1,2 +1,3 @@
 include ':app'
 include ':library:handmarkPulltorefreshLibrary'
+include ':library:umeng_update_lib'

@@ -4,10 +4,6 @@
     android:versionCode="9"
     android:versionName="1.2" >
 
-    <uses-sdk
-        android:minSdkVersion="5"
-        android:targetSdkVersion="19" />
-
     <application
         android:name=".PrayInEveryday"
         android:allowBackup="true"
@@ -30,24 +26,33 @@
             android:name=".activity.Preferences"
             android:configChanges="orientation|keyboardHidden"
             android:excludeFromRecents="true"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask"
+            android:label="@string/preference">
         </activity>
         <activity
             android:name=".activity.AboutUsActivity"
             android:configChanges="orientation|keyboardHidden"
             android:excludeFromRecents="true"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask"
+            android:label="@string/about_us">
         </activity>
         
         <activity
             android:name=".activity.CalendarListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:excludeFromRecents="true"
-            android:launchMode="singleTask"
-            android:theme="@style/AppTheme" >
+            android:launchMode="singleTask" >
      <!--        android:theme="@style/titlebar"  -->
         </activity>
         <!-- Umeng Start -->
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="52b28cd056240b97dd0108f1" >

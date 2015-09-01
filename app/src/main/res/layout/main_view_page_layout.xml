@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="聖經小助手"
+                android:text="小助手"
                 android:textColor="#0099cc" />
 
             <View
@@ -213,12 +213,12 @@
                 android:background="#0099cc" />
 
             <Button
-                android:id="@+id/btn_bible"
+                android:id="@+id/btn_calendar"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:drawableLeft="@drawable/book"
-                android:text="圣经小助手" >
+                android:drawableLeft="@drawable/ic_calendar"
+                android:text="@string/calendar" >
             </Button>
         </LinearLayout>
     </LinearLayout>

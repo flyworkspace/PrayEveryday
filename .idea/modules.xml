@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/handmarkPulltorefreshLibrary/handmarkPulltorefreshLibrary.iml" filepath="$PROJECT_DIR$/library/handmarkPulltorefreshLibrary/handmarkPulltorefreshLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/umeng_update_lib/umeng_update_lib.iml" filepath="$PROJECT_DIR$/library/umeng_update_lib/umeng_update_lib.iml" />
     </modules>
   </component>
 </project>
