@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.cathassist.daily"
-    android:versionCode="9"
-    android:versionName="1.2" >
+    package="org.cathassist.daily" >
 
     <application
         android:name=".PrayInEveryday"
@@ -59,7 +57,7 @@
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="HOME" />
+            android:value="${UMENG_CHANNEL_VALUE}" />
         <!-- Umeng End -->
     </application>
     <!-- 允许为可移动存储挂载和反挂载文件系统 -->

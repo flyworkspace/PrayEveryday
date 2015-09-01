@@ -8,12 +8,95 @@ android {
         applicationId "org.cathassist.daily"
         minSdkVersion 9
         targetSdkVersion 21
+        versionCode 10
+        versionName "1.4"
+        // dex突破65535的限制
+        multiDexEnabled true
+        // 默认是umeng的渠道
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
+        resConfigs "en", "zh"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    signingConfigs {
+        debug {
+            // No debug config
+        }
+
+        release {
+            storeFile file("../cathassist.jks")
+            storePassword "${store_password}"
+            keyAlias "${key_alias}"
+            keyPassword "${key_password}"
+        }
     }
 
     buildTypes {
-        release {
+        debug {
+//            applicationIdSuffix ".debug"
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            versionNameSuffix "-dev"
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            minifyEnabled false
+            minifyEnabled true
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    productFlavors {
+        dev {}
+        home {}
+//        wandoujia {}
+        _360 {}
+        baidu {}
+        xiaomi {}
+        qq {}
+//        taobao {}
+//        _91{}
+//        jifeng{}
+        anzhi{}
+//        anzhuo{}
+        appchina {}
+//        jinshan{}
+        google{}
+//        mumayi{}
+//        oppo{}
+//        meizu{}
+//        lenovo{}
+//        meizu{}
+//        coolpad{}
+//        huawei{}
+//        yidongMM{}
+//        wostore{}
+//        _testin {}
+    }
+
+    variantFilter { variant ->
+        //Ignore some variants
+        def isDebug = variant.getBuildType().isDebuggable();
+        def typeName = variant.getBuildType().getName()
+        def flavorName = variant.getFlavors().get(0).getName()
+        if (isDebug && "dev" != flavorName) {
+            variant.setIgnore(true)
+        } else if (typeName == 'release' && flavorName == 'dev') {
+            variant.setIgnore(true)
+        } else{
+            variant.setIgnore(false)
         }
     }
 }

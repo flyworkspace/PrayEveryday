@@ -82,8 +82,8 @@ public class PrayFragment extends Fragment {
             dayContent = dbHelper.getContent(dateString, contentType);
             dbHelper.close();
 
-            setting.setSupportZoom(true);
-            setting.setBuiltInZoomControls(true);
+//            setting.setSupportZoom(true);
+//            setting.setBuiltInZoomControls(true);
             setting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
 
             if (android.os.Build.VERSION.SDK_INT > 13) {
